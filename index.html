@@ -5,7 +5,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Global Weather</title>
-    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="./style/style.css" />
 </head>
 
 <body>
+    <div class="container">
+        <header>
+            <h1>Global Weather</h1>
+            <button id="theme-toggle">🌙 Dark Mode</button>
+        </header>
+        <div class="search-section">
+            <input type="text" id="search-input" placeholder="Search city, country, or region (e.g., USA, cameroon)" />
+            <button id="search-btn">Search</button>
+            <div id="recent-searches" class="recent-searches">
+                <h3>Recent Searches</h3>
+                <ul id="recent-list"></ul>
+            </div>
+        </div>
+        <div id="weather-display" class="weather-display" style="display: none">
+            <div class="current-weather card">
+                <h2 id="location">Location</h2>
+                <div class="temp-icon">
+                    <span id="temp">--°C</span>
+                    <img id="icon" src="app" alt="Weather Icon"/>
+                </div>
+                <p id="condition">Condition</p>
+                <div class="details">
+                    <span>Humidity: <span id="humidity">--%</span></span>
+                    <span>Wind: <span id="wind">-- km/h</span></span>
+                    <span>Timezone: <span id="timezone">UTC</span></span>
+                </div>
+            </div>
+            <div class="stats card">
+                <h2>Weather Statistics</h2>
+
+                <div class="stats-grid">
+                    <p>Feels Like: <span id="feels-like">--°C</span></p>
+                    <p>Pressure: <span id="pressure">-- hPa</span></p>
+                    <p>Visibility: <span id="visibility">-- km</span></p>
+                    <p>Sunrise: <span id="sunrise">--</span></p>
+                    <p>Sunset: <span id="sunset">--</span></p>
+                    <p>Rain Chance: <span id="rain">--%</span></p>
+                </div>
+
+                <h3>Tomorrow’s Prediction</h3>
+                <p id="prediction">--</p>
+            </div>
+
+            <div class="forecast card">
+                <h2>5-Day Forecast</h2>
+                <div id="forecast-grid" class="forecast-grid"></div>
+            </div>
+        </div>
+        <div id="error" class="error" style="display: none"></div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
