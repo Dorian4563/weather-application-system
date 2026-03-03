@@ -1,7 +1,7 @@
-const apiKey = 'b9b21bb9f1c3c5918eaa68741e94a57f' //gitleaks:allow
+
+const apiKey = 'b9b21bb9f1c3c5918eaa68741e94a57f' // gitleaks:allow
 const searchInput = document.getElementById('search-input')
 const searchBtn = document.getElementById('search-btn')
-const locationBtn = document.getElementById('location-btn')
 const weatherDisplay = document.getElementById('weather-display')
 const errorDiv = document.getElementById('error')
 const recentList = document.getElementById('recent-list')
