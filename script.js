@@ -6,6 +6,40 @@ const weatherDisplay = document.getElementById('weather-display')
 const errorDiv = document.getElementById('error')
 const recentList = document.getElementById('recent-list')
 const themeToggle = document.getElementById('theme-toggle')
+function setWeatherTheme(current) {
+  if (!current.weather || !current.weather[0]) return
+
+  const weatherMain = current.weather[0].main.toLowerCase()
+  const timezoneOffset = current.timezone
+
+  const utc =
+    new Date().getTime() + new Date().getTimezoneOffset() * 60000
+  const localTime = new Date(utc + timezoneOffset * 1000)
+  const hours = localTime.getHours()
+
+  const isNight = hours < 6 || hours > 18
+
+  document.body.classList.remove(
+    "sunny",
+    "night",
+    "cloudy",
+    "rainy",
+    "snowy",
+    "default-theme"
+  )
+
+  if (weatherMain.includes("rain")) {
+    document.body.classList.add("rainy")
+  } else if (weatherMain.includes("cloud")) {
+    document.body.classList.add("cloudy")
+  } else if (weatherMain.includes("clear")) {
+    document.body.classList.add(isNight ? "night" : "sunny")
+  } else if (weatherMain.includes("snow")) {
+    document.body.classList.add("snowy")
+  } else {
+    document.body.classList.add("default-theme")
+  }
+}
 
 themeToggle.addEventListener('click', () => {
   document.body.classList.toggle('dark')
@@ -64,6 +98,7 @@ async function fetchWeather (query, isAuto = false) {
 
 function displayWeather (data) {
   const { current, forecast, isAuto } = data
+    setWeatherTheme(current) 
   weatherDisplay.style.display = 'block'
 
   document.getElementById('location').textContent = isAuto
