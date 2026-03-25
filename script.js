@@ -1,4 +1,4 @@
-
+/* global localStorage */
 const apiKey = 'b9b21bb9f1c3c5918eaa68741e94a57f' // gitleaks:allow
 const searchInput = document.getElementById('search-input')
 const searchBtn = document.getElementById('search-btn')
@@ -6,7 +6,7 @@ const weatherDisplay = document.getElementById('weather-display')
 const errorDiv = document.getElementById('error')
 const recentList = document.getElementById('recent-list')
 const themeToggle = document.getElementById('theme-toggle')
-function setWeatherTheme(current) {
+function setWeatherTheme (current) {
   if (!current.weather || !current.weather[0]) return
 
   const weatherMain = current.weather[0].main.toLowerCase()
@@ -20,24 +20,24 @@ function setWeatherTheme(current) {
   const isNight = hours < 6 || hours > 18
 
   document.body.classList.remove(
-    "sunny",
-    "night",
-    "cloudy",
-    "rainy",
-    "snowy",
-    "default-theme"
+    'sunny',
+    'night',
+    'cloudy',
+    'rainy',
+    'snowy',
+    'default-theme'
   )
 
-  if (weatherMain.includes("rain")) {
-    document.body.classList.add("rainy")
-  } else if (weatherMain.includes("cloud")) {
-    document.body.classList.add("cloudy")
-  } else if (weatherMain.includes("clear")) {
-    document.body.classList.add(isNight ? "night" : "sunny")
-  } else if (weatherMain.includes("snow")) {
-    document.body.classList.add("snowy")
+  if (weatherMain.includes('rain')) {
+    document.body.classList.add('rainy')
+  } else if (weatherMain.includes('cloud')) {
+    document.body.classList.add('cloudy')
+  } else if (weatherMain.includes('clear')) {
+    document.body.classList.add(isNight ? 'night' : 'sunny')
+  } else if (weatherMain.includes('snow')) {
+    document.body.classList.add('snowy')
   } else {
-    document.body.classList.add("default-theme")
+    document.body.classList.add('default-theme')
   }
 }
 
@@ -98,7 +98,7 @@ async function fetchWeather (query, isAuto = false) {
 
 function displayWeather (data) {
   const { current, forecast, isAuto } = data
-    setWeatherTheme(current) 
+  setWeatherTheme(current)
   weatherDisplay.style.display = 'block'
 
   document.getElementById('location').textContent = isAuto
